@@ -1,16 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[My Octopress Blog]]></title>
-  <link href="http://yoursite.com/atom.xml" rel="self"/>
-  <link href="http://yoursite.com/"/>
-  <updated>2017-07-18T15:29:11+08:00</updated>
-  <id>http://yoursite.com/</id>
+  <title><![CDATA[Dawn Fan]]></title>
+  <link href="http://dawnfan.github.io/atom.xml" rel="self"/>
+  <link href="http://dawnfan.github.io/"/>
+  <updated>2017-07-18T15:54:21+08:00</updated>
+  <id>http://dawnfan.github.io/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
+    <name><![CDATA[Dawn Fan]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Setup Octopress Blog on Github]]></title>
+    <link href="http://dawnfan.github.io/blog/2017/07/18/setup-octopress-blog-on-github/"/>
+    <updated>2017-07-18T15:50:24+08:00</updated>
+    <id>http://dawnfan.github.io/blog/2017/07/18/setup-octopress-blog-on-github</id>
+    <content type="html"><![CDATA[<p>供参考博文：</p>
+
+<p><a href="http://www.jianshu.com/p/0ac2ac1a8e45">简书-搭建配置Octopress博客</a></p>
+
+<p><a href="http://wowubuntu.com/markdown">Markdown语法说明（简体中文）</a></p>
+
+<p>本文主要参考：（Octopress官网及其GitHub内容）</p>
+
+<p><a href="https://github.com/imathis/octopress/wiki/3rd-Party-Octopress-Themes">3rd Party Octopress Themes</a></p>
+
+<p><a href="http://octopress.org/docs/setup/">Octopress Setup</a></p>
+
+<h2>基本流程</h2>
+
+<ol>
+<li><p>GitHub新建 repository 命名 username.github.io</p></li>
+<li><p>安装Ruby（官网下载Ruby-Installer for Windows）：直接最新版就好</p></li>
+<li><p>下载Octopress并安装相关项
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='PowerShell'><span class='line'>
+</span><span class='line'>   <span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="err">:</span><span class="p">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">imathis</span><span class="p">/</span><span class="n">octopress</span><span class="p">.</span><span class="n">git</span> <span class="n">octopress</span>
+</span><span class='line'>   <span class="n">cd</span> <span class="n">octopress</span>
+</span><span class='line'>   <span class="n">gem</span> <span class="n">install</span> <span class="n">bundler</span>
+</span><span class='line'>   <span class="n">bundler</span> <span class="n">install</span>
+</span><span class='line'>   <span class="n">rake</span> <span class="n">install</span>
+</span><span class='line'>
+</span></code></pre></td></tr></table></div></figure></p></li>
+<li><p>配置到GitHub</p>
+
+<ol>
+<li><code>rake setup_github_pages</code></li>
+<li>输入GitHub repo：e.g. <code>git@github.com:username/username.github.io.git</code></li>
+<li>生成并提交博客：
+<code>rake generate</code>
+<code>rake deploy</code></li>
+<li>提交源文件（备份到Github）：
+<code>git add .</code>
+<code>git commit -m 'your message'</code>
+<code>git push origin source:source</code></li>
+</ol>
+</li>
+<li><p>配置博客（<code>config.yml</code>）：
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='PowerShell'><span class='line'>
+</span><span class='line'>   <span class="n">url</span><span class="err">:</span> <span class="c"># For rewriting urls for RSS, etc</span>
+</span><span class='line'>   <span class="n">title</span><span class="err">:</span> <span class="c"># Used in the header and title tags</span>
+</span><span class='line'>   <span class="n">subtitle</span><span class="err">:</span> <span class="c"># A description used in the header</span>
+</span><span class='line'>   <span class="n">author</span><span class="err">:</span> <span class="c"># Your name, for RSS, Copyright, Metadata</span>
+</span><span class='line'>   <span class="n">simple_search</span><span class="err">:</span> <span class="c"># Search engine for simple site search</span>
+</span><span class='line'>   <span class="n">description</span><span class="err">:</span> <span class="c"># A default meta description for your site</span>
+</span><span class='line'>   <span class="n">date_format</span><span class="err">:</span> <span class="c"># Format dates using Ruby&#39;s date strftime syntax</span>
+</span><span class='line'>   <span class="n">subscribe_rss</span><span class="err">:</span> <span class="c"># Url for your blog&#39;s feed, defauts to /atom.xml</span>
+</span><span class='line'>   <span class="n">subscribe_email</span><span class="err">:</span> <span class="c"># Url to subscribe by email (service required)</span>
+</span><span class='line'>   <span class="n">category_feeds</span><span class="err">:</span> <span class="c"># Enable per category RSS feeds (defaults to false in 2.1)</span>
+</span><span class='line'>   <span class="n">email</span><span class="err">:</span> <span class="c"># Email address for the RSS feed if you want it.</span>
+</span><span class='line'>
+</span></code></pre></td></tr></table></div></figure></p></li>
+<li><p>开始写博客：</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='PowerShell'><span class='line'>   <span class="n">rake</span> <span class="n">new_post</span><span class="p">[</span><span class="s2">&quot;Zombie Ninjas Attack: A survivor&#39;s retrospective&quot;</span><span class="p">]</span>
+</span><span class='line'>   <span class="c"># Creates source/_posts/2011-07-03-zombie-ninjas-attack-a-survivors-retrospective.markdown</span>
+</span><span class='line'>
+</span></code></pre></td></tr></table></div></figure></p></li>
+<li><p>修改主题：</p>
+
+<p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='PowerShell'><span class='line'>   <span class="p">$</span> <span class="n">cd</span> <span class="n">octopress</span>
+</span><span class='line'>   <span class="p">$</span> <span class="n">git</span> <span class="n">submodule</span> <span class="n">add</span> <span class="n">GIT_URL</span> <span class="p">.</span><span class="n">themes</span><span class="p">/</span><span class="n">THEME_NAME</span>
+</span><span class='line'>   <span class="p">$</span> <span class="n">rake</span> <span class="n">install</span><span class="p">[</span><span class="s1">&#39;THEME_NAME&#39;</span><span class="p">]</span>
+</span><span class='line'>   <span class="p">$</span> <span class="n">rake</span> <span class="n">generate</span>
+</span><span class='line'>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p> 可以自行修改主题内各文件来改变样式和框架。</p></li>
+</ol>
+
+]]></content>
+  </entry>
   
 </feed>
