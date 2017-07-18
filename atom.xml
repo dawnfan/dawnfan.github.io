@@ -4,7 +4,7 @@
   <title><![CDATA[Dawn Fan]]></title>
   <link href="http://dawnfan.github.io/atom.xml" rel="self"/>
   <link href="http://dawnfan.github.io/"/>
-  <updated>2017-07-18T16:05:53+08:00</updated>
+  <updated>2017-07-18T16:46:35+08:00</updated>
   <id>http://dawnfan.github.io/</id>
   <author>
     <name><![CDATA[Dawn Fan]]></name>
@@ -87,9 +87,9 @@
 </span><span class='line'>   <span class="n">simple_search</span><span class="err">:</span> <span class="c"># Search engine for simple site search</span>
 </span><span class='line'>   <span class="n">description</span><span class="err">:</span> <span class="c"># A default meta description for your site</span>
 </span><span class='line'>   <span class="n">date_format</span><span class="err">:</span> <span class="c"># Format dates using Ruby&#39;s date strftime syntax</span>
-</span><span class='line'>   <span class="n">subscribe_rss</span><span class="err">:</span> <span class="c"># Url for your blog&#39;s feed, defauts to /atom.xml</span>
-</span><span class='line'>   <span class="n">subscribe_email</span><span class="err">:</span> <span class="c"># Url to subscribe by email (service required)</span>
-</span><span class='line'>   <span class="n">category_feeds</span><span class="err">:</span> <span class="c"># Enable per category RSS feeds (defaults to false in 2.1)</span>
+</span><span class='line'>   <span class="n">subscribe_rss</span><span class="err">:</span> <span class="c"># Url for your blog&#39;s feed, /atom.xml</span>
+</span><span class='line'>   <span class="n">subscribe_email</span><span class="err">:</span> <span class="c"># Url to subscribe by email</span>
+</span><span class='line'>   <span class="n">category_feeds</span><span class="err">:</span> <span class="c"># Enable per category RSS feeds</span>
 </span><span class='line'>   <span class="n">email</span><span class="err">:</span> <span class="c"># Email address for the RSS feed if you want it.</span>
 </span><span class='line'>
 </span></code></pre></td></tr></table></div></figure></p></li>
@@ -98,8 +98,8 @@
 <p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='PowerShell'><span class='line'>   <span class="n">rake</span> <span class="n">new_post</span><span class="p">[</span><span class="s2">&quot;Zombie Ninjas Attack: A survivor&#39;s retrospective&quot;</span><span class="p">]</span>
-</span><span class='line'>   <span class="c"># Creates source/_posts/2011-07-03-zombie-ninjas-attack-a-survivors-retrospective.markdown</span>
+</pre></td><td class='code'><pre><code class='PowerShell'><span class='line'>   <span class="n">rake</span> <span class="n">new_post</span><span class="p">[</span><span class="s2">&quot;New Post&quot;</span><span class="p">]</span>
+</span><span class='line'>   <span class="c"># Creates source/_posts/2011-07-03-new-post.markdown</span>
 </span><span class='line'>
 </span></code></pre></td></tr></table></div></figure></p></li>
 <li><p>修改主题：</p>
