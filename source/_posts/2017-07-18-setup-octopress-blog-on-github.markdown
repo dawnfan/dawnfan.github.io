@@ -54,17 +54,17 @@ categories:
    simple_search: # Search engine for simple site search
    description: # A default meta description for your site
    date_format: # Format dates using Ruby's date strftime syntax
-   subscribe_rss: # Url for your blog's feed, defauts to /atom.xml
-   subscribe_email: # Url to subscribe by email (service required)
-   category_feeds: # Enable per category RSS feeds (defaults to false in 2.1)
+   subscribe_rss: # Url for your blog's feed, /atom.xml
+   subscribe_email: # Url to subscribe by email
+   category_feeds: # Enable per category RSS feeds
    email: # Email address for the RSS feed if you want it.
    {% endcodeblock %}
 
 6. 开始写博客：
 
    {% codeblock lang:PowerShell %}
-   rake new_post["Zombie Ninjas Attack: A survivor's retrospective"]
-   # Creates source/_posts/2011-07-03-zombie-ninjas-attack-a-survivors-retrospective.markdown
+   rake new_post["New Post"]
+   # Creates source/_posts/2011-07-03-new-post.markdown
    {% endcodeblock %}
 
 7. 修改主题：
