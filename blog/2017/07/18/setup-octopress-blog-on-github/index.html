@@ -59,42 +59,87 @@
 
 <p><a href="http://octopress.org/docs/setup/">Octopress Setup</a></p>
 
+<p>环境：Win10，git</p>
+
+<p>开始之前需要先安装git，有很多种方式，最简单的就是直接用GitHub客户端提供的GitShell。在此不多说。</p>
+
 <h2>基本流程</h2>
 
 <ol>
 <li><p>GitHub新建 repository 命名 username.github.io</p></li>
-<li><p>安装Ruby（官网下载Ruby-Installer for Windows）：直接最新版就好</p></li>
-<li><p>下载Octopress并安装相关项
+<li><p>安装Ruby（<a href="https://rubyinstaller.org/downloads/">官网</a>下载RubyInstaller和DevKit）：直接最新版就好</p>
+
+<p>其中RubyInstaller直接安装就好，勾选添加环境变量等选项。</p>
+
+<p>DevKit双击后选择解压文件夹，在该文件夹下执行两个安装命令：
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='PowerShell'><span class='line'>   <span class="p">$</span> <span class="n">ruby</span> <span class="n">dk</span><span class="p">.</span><span class="n">rb</span> <span class="n">init</span>
+</span><span class='line'>   <span class="p">$</span> <span class="n">ruby</span> <span class="n">dk</span><span class="p">.</span><span class="n">rb</span> <span class="n">install</span>
+</span></code></pre></td></tr></table></div></figure></p></li>
+<li><p>下载Octopress并安装相关项</p>
+
+<p>为了防止发布之后被墙，需要在安装octopress之前修改一下Ruby gem的软件更新源。</p>
+
+<p>这里使用的是<a href="https://gems.ruby-china.org/">RubyGems-Ruby China</a>提供的镜像。</p>
+
+<ol>
+<li>替换软件源
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='PowerShell'><span class='line'>
-</span><span class='line'>   <span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="err">:</span><span class="p">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">imathis</span><span class="p">/</span><span class="n">octopress</span><span class="p">.</span><span class="n">git</span> <span class="n">octopress</span>
-</span><span class='line'>   <span class="n">cd</span> <span class="n">octopress</span>
-</span><span class='line'>   <span class="n">gem</span> <span class="n">install</span> <span class="n">bundler</span>
-</span><span class='line'>   <span class="n">bundler</span> <span class="n">install</span>
-</span><span class='line'>   <span class="n">rake</span> <span class="n">install</span>
-</span><span class='line'>
-</span></code></pre></td></tr></table></div></figure></p></li>
+</pre></td><td class='code'><pre><code class='PowerShell'><span class='line'>   <span class="p">$</span> <span class="n">gem</span> <span class="n">update</span> <span class="p">-</span><span class="n">-system</span> <span class="c"># 这里请翻墙一下</span>
+</span><span class='line'>   <span class="p">$</span> <span class="n">gem</span> <span class="n">sources</span> <span class="p">-</span><span class="n">-add</span> <span class="n">https</span><span class="err">:</span><span class="p">//</span><span class="n">gems</span><span class="p">.</span><span class="n">ruby-china</span><span class="p">.</span><span class="n">org</span><span class="p">/</span>
+</span><span class='line'>   <span class="p">$</span> <span class="n">gem</span> <span class="n">sources</span> <span class="p">-</span><span class="n">-remove</span> <span class="n">https</span><span class="err">:</span><span class="p">//</span><span class="n">rubygems</span><span class="p">.</span><span class="n">org</span><span class="p">/</span>
+</span><span class='line'>   <span class="p">$</span> <span class="n">gem</span> <span class="n">sources</span> <span class="n">-l</span> <span class="c">#查看当前source</span>
+</span><span class='line'>   <span class="c"># 确保只有 gems.ruby-china.org</span>
+</span></code></pre></td></tr></table></div></figure></li>
+<li>下载安装octopress
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='PowerShell'><span class='line'>   <span class="p">$</span> <span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="err">:</span><span class="p">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">imathis</span><span class="p">/</span><span class="n">octopress</span><span class="p">.</span><span class="n">git</span> <span class="n">octopress</span>
+</span><span class='line'>   <span class="p">$</span> <span class="n">cd</span> <span class="n">octopress</span>
+</span><span class='line'>   <span class="p">$</span> <span class="n">gem</span> <span class="n">install</span> <span class="n">bundler</span>
+</span><span class='line'>   <span class="p">$</span> <span class="n">bundler</span> <span class="n">install</span>
+</span><span class='line'>   <span class="p">$</span> <span class="n">rake</span> <span class="n">install</span>
+</span></code></pre></td></tr></table></div></figure></li>
+</ol>
+
+
+<p> 注意在bundler install之前先把octopress下的Gemfile第一行source改为 <a href="https://gems.ruby-china.org/">https://gems.ruby-china.org/</a> 。</p>
+
+<p> 这一步往后的操作都是在octopress（安装目录）下进行的。</p></li>
 <li><p>配置到GitHub</p>
 
 <ol>
 <li><code>rake setup_github_pages</code></li>
-<li>输入GitHub repo：e.g. <code>git@github.com:username/username.github.io.git</code></li>
+<li>按命令行要求输入GitHub repo的url：e.g. <code>git@github.com:username/username.github.io.git</code></li>
 <li>生成并提交博客：
-<code>rake generate</code>
-<code>rake deploy</code></li>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='PowerShell'><span class='line'>   <span class="p">$</span> <span class="n">rake</span> <span class="n">generate</span>
+</span><span class='line'>   <span class="p">$</span> <span class="n">rake</span> <span class="n">deploy</span>
+</span></code></pre></td></tr></table></div></figure></li>
 <li>提交源文件（备份到Github）：
-<code>git add .</code>
-<code>git commit -m 'your message'</code>
-<code>git push origin source:source</code></li>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='PowerShell'><span class='line'>   <span class="p">$</span> <span class="n">git</span> <span class="n">add</span> <span class="p">.</span>
+</span><span class='line'>   <span class="p">$</span> <span class="n">git</span> <span class="n">commit</span> <span class="n">-m</span> <span class="s1">&#39;your message&#39;</span>
+</span><span class='line'>   <span class="p">$</span> <span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">source</span><span class="err">:</span><span class="n">source</span>
+</span></code></pre></td></tr></table></div></figure></li>
 </ol>
-</li>
-<li><p>配置博客（<code>config.yml</code>）：
+
+
+<p> 第3步和第4步都是日常提交更新的操作。</p>
+
+<p> 第3步生成博客然后提交修改到git上，第4步将源文件备份到git上。</p></li>
+<li><p>配置博客（修改 <code>_config.yml</code>）：
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -106,10 +151,7 @@
 <span class='line-number'>9</span>
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-</pre></td><td class='code'><pre><code class='PowerShell'><span class='line'>
-</span><span class='line'>   <span class="n">url</span><span class="err">:</span> <span class="c"># For rewriting urls for RSS, etc</span>
+</pre></td><td class='code'><pre><code class='PowerShell'><span class='line'>   <span class="n">url</span><span class="err">:</span> <span class="c"># For rewriting urls for RSS, etc</span>
 </span><span class='line'>   <span class="n">title</span><span class="err">:</span> <span class="c"># Used in the header and title tags</span>
 </span><span class='line'>   <span class="n">subtitle</span><span class="err">:</span> <span class="c"># A description used in the header</span>
 </span><span class='line'>   <span class="n">author</span><span class="err">:</span> <span class="c"># Your name, for RSS, Copyright, Metadata</span>
@@ -120,32 +162,34 @@
 </span><span class='line'>   <span class="n">subscribe_email</span><span class="err">:</span> <span class="c"># Url to subscribe by email</span>
 </span><span class='line'>   <span class="n">category_feeds</span><span class="err">:</span> <span class="c"># Enable per category RSS feeds</span>
 </span><span class='line'>   <span class="n">email</span><span class="err">:</span> <span class="c"># Email address for the RSS feed if you want it.</span>
-</span><span class='line'>
 </span></code></pre></td></tr></table></div></figure></p></li>
 <li><p>开始写博客：</p>
 
 <p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='PowerShell'><span class='line'>   <span class="n">rake</span> <span class="n">new_post</span><span class="p">[</span><span class="s2">&quot;New Post&quot;</span><span class="p">]</span>
+</pre></td><td class='code'><pre><code class='PowerShell'><span class='line'>   <span class="p">$</span> <span class="n">rake</span> <span class="n">new_post</span><span class="p">[</span><span class="s2">&quot;New Post&quot;</span><span class="p">]</span>
 </span><span class='line'>   <span class="c"># Creates source/_posts/2011-07-03-new-post.markdown</span>
-</span><span class='line'>
-</span></code></pre></td></tr></table></div></figure></p></li>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p> 修改source/_posts下生成的Markdown文件。</p></li>
 <li><p>修改主题：</p>
 
 <p><figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-<span class='line-number'>5</span>
 </pre></td><td class='code'><pre><code class='PowerShell'><span class='line'>   <span class="p">$</span> <span class="n">cd</span> <span class="n">octopress</span>
 </span><span class='line'>   <span class="p">$</span> <span class="n">git</span> <span class="n">submodule</span> <span class="n">add</span> <span class="n">GIT_URL</span> <span class="p">.</span><span class="n">themes</span><span class="p">/</span><span class="n">THEME_NAME</span>
 </span><span class='line'>   <span class="p">$</span> <span class="n">rake</span> <span class="n">install</span><span class="p">[</span><span class="s1">&#39;THEME_NAME&#39;</span><span class="p">]</span>
 </span><span class='line'>   <span class="p">$</span> <span class="n">rake</span> <span class="n">generate</span>
-</span><span class='line'>
 </span></code></pre></td></tr></table></div></figure></p>
 
 <p> 可以自行修改主题内各文件来改变样式和框架。</p></li>
+<li>本地预览博客：
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='PowerShell'><span class='line'>   <span class="p">$</span> <span class="n">rake</span> <span class="n">preview</span>
+</span></code></pre></td></tr></table></div></figure>
+查看 <a href="http://localhost:4000">http://localhost:4000</a> 就可以在本地预览啦。</li>
 </ol>
 
 </div>
