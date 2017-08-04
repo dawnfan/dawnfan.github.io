@@ -4,7 +4,7 @@
   <title><![CDATA[Dawn Fan]]></title>
   <link href="http://dawnfan.github.io/atom.xml" rel="self"/>
   <link href="http://dawnfan.github.io/"/>
-  <updated>2017-07-19T14:34:03+08:00</updated>
+  <updated>2017-08-04T22:57:24+08:00</updated>
   <id>http://dawnfan.github.io/</id>
   <author>
     <name><![CDATA[Dawn Fan]]></name>
@@ -12,6 +12,38 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Using C++ Codes in C# Project (With Dll)]]></title>
+    <link href="http://dawnfan.github.io/blog/2017/08/04/using-c-plus-plus-codes-in-c-number-project-with-dll/"/>
+    <updated>2017-08-04T17:36:50+08:00</updated>
+    <id>http://dawnfan.github.io/blog/2017/08/04/using-c-plus-plus-codes-in-c-number-project-with-dll</id>
+    <content type="html"><![CDATA[<p><em>目前只是从实现的角度讲了一下流程，完整的整个机制也是留待后面更新。</em></p>
+
+<p>因为想要用已有的C++工程渲染图片放到C#工程中使用，所以费了点时间研究怎么在C#工程中调用C++函数。本以为会挺简单的，没想到碰见了很多问题，特此记录。</p>
+
+<p>基本上要在C#中调用C++，方法有两个：</p>
+
+<ol>
+<li><p>通过托管代码，编写C++.NET类来实现，这个方法可以使C#能调用C++中定义的类。</p>
+
+<p>我在项目中没有用这个方法，尝试的时候也碰见了问题没有解决。留待后续更新。</p>
+
+<p>有兴趣的可以参考博客 <a href="http://blog.csdn.net/lgh1700/article/details/7713532">小猫哥-C#调用C++ DLL类方法</a></p></li>
+<li><p>在C#中使用DLLImport来调用非托管代码。</p></li>
+</ol>
+
+
+<p>接下来详细说一下第二种方法。</p>
+
+<h2>基本流程</h2>
+
+<ol>
+<li>生成 C++ dll</li>
+</ol>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Setup Octopress Blog on Github]]></title>
